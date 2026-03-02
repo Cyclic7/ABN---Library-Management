@@ -12,22 +12,33 @@ $result = mysqli_query($conn, $sql);
 
 <div class="container">
     <h2>📄 Loan Management</h2>
-    <a href="borrow_book.php" class="btn btn-add">➕ New Loan</a>
+    <a href="borrow_book.php" class="btn btn-add">New Loan</a>
 
     <?php if (isset($_GET['msg'])): ?>
-        <div class="alert">
-            <?php 
-                if ($_GET['msg'] == 'loaned') echo "Book loaned successfully!";
-                if ($_GET['msg'] == 'returned') echo "Book returned successfully!";
-                if ($_GET['msg'] == 'deleted') echo "Loan record deleted.";
-                if ($_GET['msg'] == 'updated') echo "Loan updated successfully!";
-                if ($_GET['msg'] == 'edit_not_allowed') echo "You can only edit ongoing loans.";
-                if ($_GET['msg'] == 'edit_failed') echo "Failed to update loan. It may no longer be ongoing.";
-                if ($_GET['msg'] == 'undo_success') echo "Loan reverted to ongoing successfully!";
-                if ($_GET['msg'] == 'undo_failed') echo "Could not undo return. The book may be already borrowed.";
-            ?>
-        </div>
-    <?php endif; ?>
+    <div class="alert alert-dismissible" id="auto-alert">
+        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <?php 
+            $message = '';
+            if ($_GET['msg'] == 'loaned') $message = "Book loaned successfully!";
+            if ($_GET['msg'] == 'returned') $message = "Book returned successfully!";
+            if ($_GET['msg'] == 'deleted') $message = "Loan record deleted.";
+            if ($_GET['msg'] == 'updated') $message = "Loan updated successfully!";
+            if ($_GET['msg'] == 'edit_not_allowed') $message = "You can only edit ongoing loans.";
+            if ($_GET['msg'] == 'edit_failed') $message = "Failed to update loan. It may no longer be ongoing.";
+            if ($_GET['msg'] == 'undo_success') $message = "Loan reverted to ongoing successfully!";
+            if ($_GET['msg'] == 'undo_failed') $message = "Could not undo return. The book may be already borrowed.";
+            echo $message;
+        ?>
+    </div>
+    <script>
+        setTimeout(function() {
+            var alert = document.getElementById('auto-alert');
+            if (alert) {
+                alert.style.display = 'none';
+            }
+        }, 5000);
+    </script>
+<?php endif; ?>
 
     <div class="card-grid">
         <?php while($row = mysqli_fetch_assoc($result)): ?>

@@ -6,7 +6,7 @@ $result = mysqli_query($conn, "SELECT * FROM members ORDER BY id DESC");
 
 <div class="container">
     <h2>👥 Library Members</h2>
-    <a href="add_member.php" class="btn btn-add">+ Register New Member</a>
+    <a href="add_member.php" class="btn btn-add">Register New Member</a>
 
     <div class="card-grid">
         <?php while ($row = mysqli_fetch_assoc($result)): ?>

@@ -13,7 +13,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <nav class="navbar">
         <div class="nav-container">
             <a href="/Aleria_IM302/library_system/index.php" class="nav-brand">
-                <span class="brand-icon">📚</span>
+                <span class="brand-icon"></span>
                 <span class="brand-text">ABN Library</span>
             </a>
             <ul class="nav-menu">

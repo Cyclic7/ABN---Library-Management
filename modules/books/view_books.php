@@ -6,7 +6,7 @@ $result = mysqli_query($conn, "SELECT * FROM books ORDER BY id DESC");
 
 <div class="container">
     <h2>📚 Book Inventory</h2>
-    <a href="add_book.php" class="btn btn-add">+ Add New Book</a>
+    <a href="add_book.php" class="btn btn-add">Add New Book</a>
 
     <div class="card-grid">
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
